@@ -18,7 +18,7 @@
         <v-list-tile>
           <v-list-tile-action>
           </v-list-tile-action>
-            <v-list-tile-content>View Meetups</v-list-tile-content>
+            <v-list-tile-content><v-btn flat width="200"> Meetups</v-btn></v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
