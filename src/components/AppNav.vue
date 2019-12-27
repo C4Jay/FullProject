@@ -2,13 +2,17 @@
    <span>
         <v-navigation-drawer app v-model="Hamburg" class="brown lighten-2" dark disable-resize-watcher="">
             <v-list>    
-              <v-list-tile v-for="item in Items" :key="item.title">
+              <v-list-tile 
+              v-for="item in Items" 
+              :key="item.title">
                   <v-list-tile-action>
                     
                   </v-list-tile-action>
 
                         <v-list-tile-content>
-                          <v-btn flat width="200" :to="item.to">
+                          <v-btn 
+                          flat width="200" 
+                          :to="item.to">
                             {{item.title}}
                           </v-btn>
                         </v-list-tile-content>
@@ -28,7 +32,13 @@
             <v-spacer class="hidden-sm-and-down"></v-spacer>
             
             <v-toolbar-items class="hidden-xs-only">
-                <v-btn flat v-for="item in Items" :key="item.title" :to="item.to">{{item.title}}</v-btn> 
+                <v-btn 
+                flat 
+                v-for="item in Items" 
+                :key="item.title" 
+                :to="item.to">
+                {{item.title}}
+                </v-btn> 
             </v-toolbar-items>
         </v-toolbar>
    
