@@ -15,6 +15,13 @@
                                 <h3 class="white--text">New York MeetUp</h3>
                                 <div>Our New York meetup was held on 8th lasth month</div>
                             </v-card-title>
+                            <v-card-actions class="btns">
+                                <v-btn to="/meetups/1" flat="true" color="blue">
+                                    <v-icon left>mdi-anchor</v-icon>
+                                    View New York Meetup
+                                
+                                </v-btn>
+                            </v-card-actions>
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -33,8 +40,13 @@ export default {
 </script>
 
 <style scoped>
+.btns{
+    position: relative;
+    left: 10px;
+}
 .card {
     position: relative;
     left: 8px;
 }
+
 </style>

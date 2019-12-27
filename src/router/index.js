@@ -6,6 +6,7 @@ import Organize from '@/components/Organize'
 import Profile from '@/components/Profile'
 import SignUp from '@/components/SignUp'
 import SignIn from '@/components/SignIn'
+import MeetUp from '@/components/MeetUp'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/meetups/new',
       name: 'Organize',
       component: Organize
+    },
+    {
+      path: '/meetups/:id',
+      name: 'Meetup',
+      component: MeetUp
     },
     {
       path: '/profile',

@@ -17,11 +17,12 @@
     </v-layout>
     <v-layout row wrap>
       <v-flex xs12>
-        <v-carousel>
+        <v-carousel style="cursor: pointer;">
           <v-carousel-item 
           v-for="item in items"
           v-bind:src="item.img"
-          :key="item.title">
+          :key="item.title"
+          @click="Onmeetup(item.id)">
           <v-row justify="center">
           <div class="title">
             {{ item.title }}
@@ -55,14 +56,21 @@ export default {
 data() {
     return {
       items: [
-        {img: 'https://i.ytimg.com/vi/gYLQThUxpvQ/maxresdefault.jpg', id: '', title: 'New York' },
-        {img: 'https://d2mpqlmtgl1znu.cloudfront.net/AcuCustom/Sitename/DAM/020/Paris_AdobeStock_264549883_1.jpg', id: '', title: 'Paris' },
+        {img: 'https://i.ytimg.com/vi/gYLQThUxpvQ/maxresdefault.jpg', id: '1111', title: 'New York' },
+        {img: 'https://d2mpqlmtgl1znu.cloudfront.net/AcuCustom/Sitename/DAM/020/Paris_AdobeStock_264549883_1.jpg', id: '2222', title: 'Paris' },
         //{img: '', id: '', title: '' },
         //{img: '', id: '', title: '' },
         //{img: '', id: '', title: '' },
         
       ]
     }
+  },
+  methods: {
+    Onmeetup(id) {
+      this.$router.push('/meetups/' + id);
+
+    }
+
   }
 }
 </script>
