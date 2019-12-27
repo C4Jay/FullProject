@@ -6,7 +6,7 @@
                 <v-card-title>
                   <h4 class="blue--text">  New York MeetUp </h4>
                 </v-card-title>
-                <v-img height="400" src="https://i.ytimg.com/vi/gYLQThUxpvQ/maxresdefault.jpg">
+                <v-img height="400" src="https://media.architecturaldigest.com/photos/5da74823d599ec0008227ea8/16:9/w_2560%2Cc_limit/GettyImages-946087016.jpg">
                 </v-img>
                 <v-card-text>
                     <div class="text display-1 blue-grey--text">8th Sept</div>

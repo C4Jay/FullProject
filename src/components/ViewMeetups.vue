@@ -7,7 +7,7 @@
                     <v-layout row>
                         <v-flex xs5>
                             <div class="card">
-                            <v-img src="https://i.ytimg.com/vi/gYLQThUxpvQ/maxresdefault.jpg"></v-img>
+                            <v-img src="https://media.architecturaldigest.com/photos/5da74823d599ec0008227ea8/16:9/w_2560%2Cc_limit/GettyImages-946087016.jpg"></v-img>
                             </div>
                         </v-flex>
                         <v-flex xs10 sm8 md7>
