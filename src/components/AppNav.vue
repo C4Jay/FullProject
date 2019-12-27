@@ -11,7 +11,7 @@
 
                         <v-list-tile-content>
                           <v-btn 
-                          flat width="200" 
+                          text width="200" 
                           :to="item.to">
                             {{item.title}}
                           </v-btn>

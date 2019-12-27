@@ -5,7 +5,7 @@
             <v-card class="info" >
                 <v-container fluid>
                     <v-layout row>
-                        <v-flex xs5 >
+                        <v-flex xs10 sm5 >
                             <div class="card">
                             <v-img height="298" :src="item.img"></v-img>
                             </div>

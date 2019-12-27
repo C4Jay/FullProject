@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     DoneMeetups: [
       {img: 'https://media.architecturaldigest.com/photos/5da74823d599ec0008227ea8/16:9/w_2560%2Cc_limit/GettyImages-946087016.jpg', id: '1111', title: 'New York', date: '2018-08-18' },
-      {img: 'https://d2mpqlmtgl1znu.cloudfront.net/AcuCustom/Sitename/DAM/020/Paris_AdobeStock_264549883_1.jpg', id: '2222', title: 'Paris', date: '2018-08-12' },
+      {img: 'https://d2mpqlmtgl1znu.cloudfront.net/AcuCustom/Sitename/DAM/020/Paris_AdobeStock_264549883_1.jpg', id: '2222', title: 'Paris', date: '2018-08-19' },
       //{img: '', id: '', title: '' },
       //{img: '', id: '', title: '' },
       //{img: '', id: '', title: '' },
@@ -18,8 +18,23 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    createmeetup (state, pay) {
+      state.DoneMeetups.push(pay)
+    }
   },
   actions: {
+    createmeetup ({ commit }, pay) {
+      const meetup = {
+        title: pay.title,
+        location: pay.location,
+        img: pay.img,
+        description: pay.description,
+        date: pay.date,
+        id: ('8888')
+        
+      }
+      commit('createmeetup', meetup)
+    }
   },
   modules: {
   },
