@@ -1,24 +1,24 @@
 <template>
 <v-container>
-    <v-layout>
+    <v-layout v-for="item in meetups" :key="item.title" class="mb-2">
         <v-flex xs12>
-            <v-card class="info">
+            <v-card class="info" >
                 <v-container fluid>
                     <v-layout row>
-                        <v-flex xs5>
+                        <v-flex xs5 >
                             <div class="card">
-                            <v-img src="https://media.architecturaldigest.com/photos/5da74823d599ec0008227ea8/16:9/w_2560%2Cc_limit/GettyImages-946087016.jpg"></v-img>
+                            <v-img height="298" :src="item.img"></v-img>
                             </div>
                         </v-flex>
                         <v-flex xs10 sm8 md7>
                             <v-card-title primary-title>
-                                <h3 class="white--text">New York MeetUp</h3>
-                                <div>Our New York meetup was held on 8th lasth month</div>
+                                <h3 class="white--text">{{item.title}}</h3>
+                                <div>Our New York meetup will be held on {{item.date}}</div>
                             </v-card-title>
                             <v-card-actions class="btns">
-                                <v-btn to="/meetups/1" flat="true" color="blue">
+                                <v-btn :to="'/meetups/' + item.id" flat="true" color="blue">
                                     <v-icon left>mdi-anchor</v-icon>
-                                    View New York Meetup
+                                    View {{ item.title }} MeetUp
                                 
                                 </v-btn>
                             </v-card-actions>
@@ -35,8 +35,14 @@
 
 <script>
 export default {
-    name: 'ViewMeetups'
+    name: 'ViewMeetups',
+    computed: {
+        meetups () {
+            return this.$store.getters.DoneMeetups
+        }
+    }
 }
+
 </script>
 
 <style scoped>

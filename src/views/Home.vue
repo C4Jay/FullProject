@@ -19,7 +19,7 @@
       <v-flex xs12>
         <v-carousel style="cursor: pointer;">
           <v-carousel-item 
-          v-for="item in items"
+          v-for="item in meetups"
           v-bind:src="item.img"
           :key="item.title"
           @click="Onmeetup(item.id)">
@@ -53,18 +53,14 @@ export default {
   components: {
   //  HelloWorld
   },
-data() {
-    return {
-      items: [
-        {img: 'https://media.architecturaldigest.com/photos/5da74823d599ec0008227ea8/16:9/w_2560%2Cc_limit/GettyImages-946087016.jpg', id: '1111', title: 'New York' },
-        {img: 'https://d2mpqlmtgl1znu.cloudfront.net/AcuCustom/Sitename/DAM/020/Paris_AdobeStock_264549883_1.jpg', id: '2222', title: 'Paris' },
-        //{img: '', id: '', title: '' },
-        //{img: '', id: '', title: '' },
-        //{img: '', id: '', title: '' },
-        
-      ]
+
+  computed: {
+    meetups () {
+      return this.$store.getters.f_Meetups
+
     }
   },
+
   methods: {
     Onmeetup(id) {
       this.$router.push('/meetups/' + id);
