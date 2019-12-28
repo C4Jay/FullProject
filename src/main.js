@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 import Filtering from './filters/filter';
 import 'vue-material-design-icons/styles.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css'

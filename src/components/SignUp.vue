@@ -5,14 +5,14 @@
         <v-card>
             <v-card-text>
                 <v-container>
-                    <v-form>
+                    <v-form @submit.prevent="onSignup">
                         <v-layout row>
-                            <v-flex xs12 sm6 offeset-sm3>
+                            <v-flex xs12 offeset-sm3>
                                 <v-text-field
-                                    name="mail"
+                                    name="email"
                                     label="Mail"
-                                    id="mail"
-                                    v-model="mail"
+                                    id="email"
+                                    v-model="email"
                                     type="email"
                                     required
                                     >
@@ -22,7 +22,7 @@
 
                         </v-layout>
                         <v-layout row>
-                            <v-flex xs12 sm6 offeset-sm3>
+                            <v-flex xs12 offeset-sm3>
                                 <v-text-field
                                     name="password"
                                     label="Password"
@@ -38,7 +38,7 @@
                         </v-layout>
 
                         <v-layout row>
-                            <v-flex xs12 sm6 offeset-sm3>
+                            <v-flex xs12 offeset-sm3>
                                 <v-text-field
                                     name="confirmPassword"
                                     label="Confirm Password"
@@ -87,7 +87,7 @@ export default {
 
     data () {
         return {
-            mail: '',
+            email: '',
             password: '',
             confirmPassword: ''
         }
@@ -100,6 +100,7 @@ export default {
     },
     methods: {
         onSignup () {
+            this.$store.dispatch('signUserup', {email: this.email, password: this.password})
 
         }
     }

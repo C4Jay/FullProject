@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import firebase from 'firebase';
 
 Vue.use(Vuex)
 
@@ -20,6 +21,9 @@ export default new Vuex.Store({
   mutations: {
     createmeetup (state, pay) {
       state.DoneMeetups.push(pay)
+    },
+    setUser (state, pay) {
+      state.user = pay
     }
   },
   actions: {
@@ -34,6 +38,29 @@ export default new Vuex.Store({
         
       }
       commit('createmeetup', meetup)
+    },
+
+
+    signUserup ({commit}, pay) {
+      firebase.auth().createUserWithEmailAndPassword(pay.email,pay.password)
+      .then(
+        user => {
+          const newUser = {
+            id: user.user.uid,
+            registeredMeetups: []
+          }
+
+
+     
+          commit ('setUser', newUser)
+        }
+      )
+      .catch (
+        error => {
+          console.log(error)
+        }
+      )
+
     }
   },
   modules: {
