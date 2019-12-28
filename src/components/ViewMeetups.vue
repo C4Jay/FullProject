@@ -13,7 +13,7 @@
                         <v-flex xs10 sm8 md7>
                             <v-card-title primary-title>
                                 <h3 class="white--text">{{item.title}}</h3>
-                                <div>Our New York meetup will be held on {{item.date}}</div>
+                                <div>Our New York meetup will be held on {{item.date | filter}}</div>
                             </v-card-title>
                             <v-card-actions class="btns">
                                 <v-btn :to="'/meetups/' + item.id" flat="true" color="blue">

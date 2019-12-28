@@ -9,7 +9,7 @@
                 <v-img height="400" :src="meetup.img">
                 </v-img>
                 <v-card-text>
-                    <div class="text display-1 blue-grey--text">{{ meetup.date }}</div>
+                    <div class="text display-1 blue-grey--text">{{ meetup.date | filter }}</div>
                     <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quas ipsum impedit voluptatibus reprehenderit ipsam ut ex explicabo deleniti, maiores vero animi blanditiis id doloremque commodi facere assumenda ullam, unde magni, perferendis accusamus quis officia nesciunt! Voluptatem, officia. In, ad.</div>
                     </v-card-text>
                     <v-card-actions>

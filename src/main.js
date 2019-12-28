@@ -3,11 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
+import Filtering from './filters/filter';
 import 'vue-material-design-icons/styles.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 
 Vue.config.productionTip = false
+
+Vue.filter('date', Filtering)
 
 new Vue({
   router,
