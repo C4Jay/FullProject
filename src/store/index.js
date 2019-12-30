@@ -13,10 +13,7 @@ export default new Vuex.Store({
       //{img: '', id: '', title: '' },
       //{img: '', id: '', title: '' },
     ],
-    user: {
-      id: 'user1',
-      registeredMeetups: ['1111']
-    }
+    user: null
   },
   mutations: {
     createmeetup (state, pay) {
@@ -61,6 +58,24 @@ export default new Vuex.Store({
         }
       )
 
+    },
+    signUserin ({commit}, pay) {
+      firebase.auth().signInWithEmailAndPassword(pay.email, pay.password)
+      .then(
+        user => {
+          const newUser = {
+            id: user.user.uid,
+            registeredMeetups: []
+          }
+          commit('setUser', newUser)
+        }
+      )
+      .catch(
+        error => {
+        console.log(error)
+        }
+
+        )
     }
   },
   modules: {
@@ -80,6 +95,9 @@ export default new Vuex.Store({
           return meetup.id === meetupid
         })
       }
+    },
+    user (state) {
+      return state.user
     }
   }
 })

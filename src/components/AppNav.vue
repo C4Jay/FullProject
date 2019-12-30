@@ -54,15 +54,31 @@ export default {
   data() {
     return {
       Hamburg: false,
-      Items: [
-        {icon:'mdi-anchor' , title:'View MeetUps' , to: '/meetups' },        
-        {icon:'mdi-room' ,title:'Organize MeetUp' , to: '/meetups/new' },        
-        {icon:'mdi-person' ,title:'Profile' , to: '/profile'},        
+    
+    }
+  },
+
+  computed: {
+    Items () {
+      let Items = [
         {icon:'mdi-face' ,title:'Sign Up' , to: '/signup'},        
         {icon:'mdi-account' ,title:'Sign In' , to: '/signin' },
 
       ]
+      if (this.userIsauthenticated ) {
+        Items = [          
+        {icon:'mdi-anchor' , title:'View MeetUps' , to: '/meetups' },        
+        {icon:'mdi-room' ,title:'Organize MeetUp' , to: '/meetups/new' },        
+        {icon:'mdi-person' ,title:'Profile' , to: '/profile'},        
+      
+        ]
+      }
+      return Items
+    },
+    userIsauthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
     }
+
   },
 
 
