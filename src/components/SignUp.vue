@@ -1,5 +1,6 @@
 <template>
 <v-container>
+
 <v-layout row> 
     <v-flex xs12 sm6 offset-sm3>
         <v-card>
@@ -56,7 +57,7 @@
 
                         <v-layout row>
                             <v-flex xs12>
-                                <v-btn color="yellow" type="submit">
+                             <v-btn color="yellow" type="submit">
                                     SignUp</v-btn>
 
                             </v-flex>
@@ -89,17 +90,26 @@ export default {
         return {
             email: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            loader: null,
+            loading: false
         }
     },
+
+     
+
+
     computed: {
         comparePasswords () {
             return this.password !== this.confirmPassword ? 'Passwords do not match' : ''
         },
         user () {
             return this.$store.getters.user
+        },
+  /*      loading () {
+            return this.$store.getters.progressing
         }
-
+*/
     },
 
     watch: {
@@ -108,7 +118,15 @@ export default {
                 this.$router.push('/')
             }
 
-        }
+        },
+          loader () {
+        const l = this.loader
+        this[l] = !this[l]
+
+        setTimeout(() => (this[l] = false), 3000)
+
+        this.loader = null
+      }
     },
 
 
@@ -116,6 +134,10 @@ export default {
         onSignup () {
             this.$store.dispatch('signUserup', {email: this.email, password: this.password})
 
+        },
+
+        oncan () {
+            console.log('can alert')
         }
     }
 }

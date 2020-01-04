@@ -13,35 +13,92 @@ export default new Vuex.Store({
       //{img: '', id: '', title: '' },
       //{img: '', id: '', title: '' },
     ],
-    user: null
+    user: null,
+    progressing: false,
+    error: null
   },
   mutations: {
+    meetupsset (state, pay) {
+      state.DoneMeetups = pay
+    },
     createmeetup (state, pay) {
       state.DoneMeetups.push(pay)
     },
     setUser (state, pay) {
       state.user = pay
+    },
+    setProgressing (state, pay) {
+      state.progressing = pay
+    },
+    setError (state, pay) {
+      state.error = pay
+    },
+    clearError (state) {
+      state.error = null
     }
   },
+
+
+
   actions: {
+    meetupsfetch ({commit}) {
+      firebase.database().ref('meetups').once('value')
+      .then((data) => {
+        const meetups = []
+        const obj = data.val()
+        for(let key in obj) {
+          meetups.push({
+            id: key,
+            title: obj[key].title,
+            description: obj[key].description,
+            img: obj[key].img,
+            date: obj[key].date
+          })
+        }
+        commit('meetupsset',meetups)
+
+      })
+      .catch(
+        (error) => {
+          console.log(error)
+        }
+      )
+
+    },
     createmeetup ({ commit }, pay) {
       const meetup = {
         title: pay.title,
         location: pay.location,
         img: pay.img,
         description: pay.description,
-        date: pay.date,
-        id: ('8888')
-        
+        date: pay.date.toISOString()
       }
-      commit('createmeetup', meetup)
+      firebase.database().ref('meetups').push(meetup)
+      .then((data) => {
+        const key = data.key
+        //go fire to create the meetup
+        commit('createmeetup', {
+          ...meetup,
+          id: key
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+      
+    
     },
 
 
     signUserup ({commit}, pay) {
+
+      commit('setProgressing', true)
+      commit('clearError')
       firebase.auth().createUserWithEmailAndPassword(pay.email,pay.password)
       .then(
+        
         user => {
+          commit('setProgressing', false)
           const newUser = {
             id: user.user.uid,
             registeredMeetups: []
@@ -54,12 +111,16 @@ export default new Vuex.Store({
       )
       .catch (
         error => {
+          commit('setProgressing', false)
+          commit('setError', true)
           console.log(error)
         }
       )
 
     },
     signUserin ({commit}, pay) {
+      commit('setProgressing', true)
+      commit('clearError')
       firebase.auth().signInWithEmailAndPassword(pay.email, pay.password)
       .then(
         user => {
@@ -72,6 +133,8 @@ export default new Vuex.Store({
       )
       .catch(
         error => {
+        commit('setProgressing', false)
+        commit('setError', error)
         console.log(error)
         }
 
